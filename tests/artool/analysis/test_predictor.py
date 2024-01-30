@@ -13,7 +13,7 @@ class TestPredictorModule(unittest.TestCase):
     def setUp(self):
         self.fj_predictor = Predictor("salary", "JDU-SS")
 
-    def test_valid_validate_type(self):
+    def test_valid_type(self):
         """_summary_
         """
         for val in ["salary","kpi","retrenchment","on-bench","promotion"]:
@@ -21,16 +21,16 @@ class TestPredictorModule(unittest.TestCase):
                 self.fj_predictor.set_type(val)
                 self.assertEqual(self.fj_predictor.type, val)
 
-    def test_invalid_validate_type(self):
+    def test_invalid_type(self):
         """_summary_
         """
         with self.assertRaises(PredictorError) as pe:
             self.fj_predictor.set_type("local-manager")
         the_exception = pe.exception
         self.assertEqual(the_exception.message, "Invalid Predictor type local-manager")
-   
+ 
     @unittest.expectedFailure
-    def test_invalid_validate_salary_input(self):
+    def test_invalid_salary_input(self):
         """_summary_
         """
         self.fj_predictor.validate_salary_input(1000000000000000)
