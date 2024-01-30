@@ -28,6 +28,12 @@ class TestPredictorModule(unittest.TestCase):
             self.fj_predictor.set_type("local-manager")
         the_exception = pe.exception
         self.assertEqual(the_exception.message, "Invalid Predictor type local-manager")
+   
+    @unittest.expectedFailure
+    def test_invalid_validate_salary_input(self):
+        """_summary_
+        """
+        self.fj_predictor.validate_salary_input(1000000000000000)
 
     def tearDown(self):
         del self.fj_predictor
